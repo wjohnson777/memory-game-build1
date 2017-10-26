@@ -68,6 +68,11 @@ h1 {
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
+	transform: rotateY(180deg);
+	transform-style: preserve-3d;
+	/* transition: -webkit-transform .3s ease; */
+	/* transition: transform .3s ease; */
+	transition: transform .3s ease, -webkit-transform .3s ease;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -75,20 +80,21 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-/* .deck .card:nth-child(4n) { */
-  margin: 0 0 15px 0;
+.deck .card:nth-child(4n) {
+  margin: 0;
 }
 
-/* .deck .card:nth-child(n+13) { */
-  margin: 0 30px 0 0;
+.deck .card:nth-child(n+13) {
+  margin: 0 15px 0 0;
 }
 
-/* .deck .card:nth-child(n+13):nth-child(4n) { */
+.deck .card:nth-child(n+13):nth-child(4n) {
   margin: 0;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+	-webkit-transform: rotateY(0);
+		transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
 }
@@ -98,6 +104,8 @@ h1 {
 }
 
 .deck .card.match {
+	-webkit-transform: rotateY(0);
+		transform: rotateY(0);
     cursor: default;
     background: #02ccba;
     font-size: 33px;
