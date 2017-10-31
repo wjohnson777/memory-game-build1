@@ -49,7 +49,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 675px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: linear-gradient(160deg, #02ccba 0%, #1a92ce 100%);
     padding: 32px;
 	/* padding-top: 30px; */
     border-radius: 10px;
@@ -95,7 +95,7 @@ h1 {
 .deck .card.open {
 	-webkit-transform: rotateY(0);
 		transform: rotateY(0);
-    background: #02b3e4;
+    background: #0198e4;
     cursor: default;
 }
 
@@ -107,7 +107,7 @@ h1 {
 	-webkit-transform: rotateY(0);
 		transform: rotateY(0);
     cursor: default;
-    background: #02ccba;
+    background: #10894b;
     font-size: 33px;
 }
 
