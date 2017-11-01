@@ -66,7 +66,7 @@ function endGame(moves, score) {
 		text: 'With ' + moves + ' Moves and ' + score + ' Stars.\n YAAAY!',
 		type: 'success',
 		confirmButtonColor: '#02ccba',
-		confirmButtonText: 'Play Again!'
+		confirmButtonText: 'Play Again?!'
 	}).then(function(isConfirm) {
 		if (isConfirm) {
 			initGame();
@@ -113,12 +113,12 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
       }, delay);
       match++;
     } else {
-      $deck.find('.open').addClass('notmatch animated infinite jello');
+      $deck.find('.open').addClass('notmatch animated infinite wobble');
 			setTimeout(function() {
-				$deck.find('.open').removeClass('animated infinite jello');
+				$deck.find('.open').removeClass('animated infinite wobble');
 			}, delay / 1.5);
       setTimeout(function() {
-        $deck.find('.open').removeClass('open show notmatch animated infinite jello');
+        $deck.find('.open').removeClass('open show notmatch animated infinite wobble');
       }, delay);
     }
     opened = [];
