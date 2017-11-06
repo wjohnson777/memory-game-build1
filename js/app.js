@@ -41,6 +41,17 @@ function initGame() {
 	addCardListener();
 };
 
+var timerVar = setInterval(countTimer, 1000);
+var totalSeconds = 0;
+function countTimer() {
+   ++totalSeconds;
+   var hour = Math.floor(totalSeconds /3600);
+   var minute = Math.floor((totalSeconds - hour*3600)/60);
+   var seconds = totalSeconds - (hour*3600 + minute*60);
+
+   document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+}
+
 // Set Rating and final Score
 function setRating(moves) {
 	var rating = 3;
@@ -98,11 +109,11 @@ var addCardListener = function() {
 // Card flip
 $deck.find('.card:not(".match, .open")').bind('click' , function() {
 	if($('.show').length > 1) { return true; }
-	
 	var $this = $(this),
 			card = $this.context.innerHTML;
   $this.addClass('open show');
 	opened.push(card);
+	
 
 	// Compare with opened card
   if (opened.length > 1) {
