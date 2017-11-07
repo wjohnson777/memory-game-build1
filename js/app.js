@@ -50,6 +50,8 @@ function countTimer() {
    var seconds = totalSeconds - (hour*3600 + minute*60);
 
    document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+   
+   timer.addEventListener('click', countTimer, false);
 }
 
 // Set Rating and final Score
