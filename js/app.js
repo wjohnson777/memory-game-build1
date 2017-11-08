@@ -51,7 +51,10 @@ function countTimer() {
 
    document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
    
-   timer.addEventListener('click', countTimer, false);
+   /* timer.addEventListener('click', countTimer, false); */
+   
+   /* $('#deck.card').on('click', function(countTimer) {
+   }); */
 }
 
 // Set Rating and final Score
