@@ -41,6 +41,7 @@ function initGame() {
 	addCardListener();
 };
 
+// Activate Timer
 var timerVar = setInterval(countTimer, 1000);
 var totalSeconds = 0;
 function countTimer() {
