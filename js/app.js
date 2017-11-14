@@ -39,6 +39,9 @@ function initGame() {
 		$deck.append($('<li class="card"><i class="fa fa-' + cards[i] + '"></i></li>'))
 	}
 	addCardListener();
+	
+	if(initGame);
+		countTimer();
 };
 
 // Activate Timer
@@ -52,11 +55,7 @@ function countTimer() {
 
    document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
    
-   /* timer.addEventListener('click', countTimer, false); */
-   
-   /* $('#deck.card').on('click', function(countTimer) {
-   }); */
-}
+};
 
 // Set Rating and final Score
 function setRating(moves) {
