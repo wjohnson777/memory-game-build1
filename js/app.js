@@ -39,9 +39,7 @@ function initGame() {
 		$deck.append($('<li class="card"><i class="fa fa-' + cards[i] + '"></i></li>'))
 	}
 	addCardListener();
-	
-	if(initGame);
-		countTimer();
+		
 };
 
 // Activate Timer
@@ -55,6 +53,9 @@ function countTimer() {
 
    document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
    
+   if(initGame = true) {
+		countTimer();
+	}
 };
 
 // Set Rating and final Score
