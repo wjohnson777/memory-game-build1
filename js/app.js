@@ -31,6 +31,7 @@ function shuffle(array) {
 function initGame() {
   var cards = shuffle(symbols);
   $deck.empty();
+  $(".clock").text('0:00');
   match = 0;
   moves = 0;
   $moveNum.text('0');
@@ -42,21 +43,47 @@ function initGame() {
 		
 };
 
-// Activate Timer
-var timerVar = setInterval(countTimer, 1000);
-var totalSeconds = 0;
-function countTimer() {
-   ++totalSeconds;
-   var hour = Math.floor(totalSeconds /3600);
-   var minute = Math.floor((totalSeconds - hour*3600)/60);
-   var seconds = totalSeconds - (hour*3600 + minute*60);
+// Timer
+  var gameTimer = () => {
 
-   document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
-   
-   if(initGame = true) {
-		countTimer();
-	}
-};
+    let startTime = new Date().getTime();
+
+    // Update the timer every second
+    timer = setInterval(function() {
+
+      var now = new Date().getTime();
+
+      // Find the time elapsed between now and start
+      var elapsed = now - startTime;
+
+      // Calculate minutes and seconds
+      let minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+      // Add starting 0 if seconds < 10
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+
+      let currentTime = minutes + ':' + seconds;
+
+      // Update clock on game screen
+      $(".clock").text(currentTime);
+    }, 750);
+
+  };
+  
+/* 	var timerVar = setInterval(countTimer, 1000);
+	var totalSeconds = 0;
+	function countTimer() {
+	++totalSeconds;
+	var hour = Math.floor(totalSeconds /3600);
+	var minute = Math.floor((totalSeconds - hour*3600)/60);
+	var seconds = totalSeconds - (hour*3600 + minute*60);
+
+	document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+
+}; */
 
 // Set Rating and final Score
 function setRating(moves) {
@@ -118,7 +145,15 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 	var $this = $(this),
 			card = $this.context.innerHTML;
   $this.addClass('open show');
-	opened.push(card);
+	opened.push(card); {
+	
+		// Start Timer
+		if (card === opened) {
+			gameTimer();
+			opened = true;
+		}
+    }
+	/* timerVar; */
 	
 
 	// Compare with opened card
