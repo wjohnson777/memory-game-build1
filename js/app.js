@@ -2,11 +2,13 @@ var symbols = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', '
 		opened = [],
 		match = 0,
 		moves = 0,
+		clicks = 0,
 		$deck = jQuery('.deck'),
 		$scorePanel = $('#score-panel'),
 		$moveNum = $('.moves'),
 		$ratingStars = $('i'),
 		$restart = $('.restart'),
+		timer,
 		delay = 800,
 		gameCardsQTY = symbols.length / 2,
 		rank3stars = gameCardsQTY + 2,
@@ -27,11 +29,10 @@ function shuffle(array) {
   return array;
 }
 
-// Initial Game
+// Start Game
 function initGame() {
   var cards = shuffle(symbols);
   $deck.empty();
-  $(".clock").text('0:00');
   match = 0;
   moves = 0;
   $moveNum.text('0');
@@ -39,12 +40,13 @@ function initGame() {
 	for (var i = 0; i < cards.length; i++) {
 		$deck.append($('<li class="card"><i class="fa fa-' + cards[i] + '"></i></li>'))
 	}
-	addCardListener();
+	addClkListener();
+	$(".clock").text('0:00');
 		
 };
 
 // Timer
-  var gameTimer = () => {
+  let gameTimer = () => {
 
     let startTime = new Date().getTime();
 
@@ -72,18 +74,6 @@ function initGame() {
     }, 750);
 
   };
-  
-/* 	var timerVar = setInterval(countTimer, 1000);
-	var totalSeconds = 0;
-	function countTimer() {
-	++totalSeconds;
-	var hour = Math.floor(totalSeconds /3600);
-	var minute = Math.floor((totalSeconds - hour*3600)/60);
-	var seconds = totalSeconds - (hour*3600 + minute*60);
-
-	document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
-
-}; */
 
 // Set Rating and final Score
 function setRating(moves) {
@@ -113,6 +103,8 @@ function endGame(moves, score) {
 		confirmButtonText: 'Play Again?!'
 	}).then(function(isConfirm) {
 		if (isConfirm) {
+			clicks = 0;
+			clearInterval(timer);
 			initGame();
 		}
 	})
@@ -132,45 +124,41 @@ $restart.bind('click', function() {
     confirmButtonText: 'Yes, Restart Game!'
   }).then(function(isConfirm) {
     if (isConfirm) {
+		clicks = 0;
+		clearInterval(timer);
       initGame();
     }
   })
 });
 
-var addCardListener = function() {
+var addClkListener = function() {
 
 // Card flip
 $deck.find('.card:not(".match, .open")').bind('click' , function() {
+	clicks++ ;
+	clicks == 1 ? gameTimer() :'';
 	if($('.show').length > 1) { return true; }
 	var $this = $(this),
 			card = $this.context.innerHTML;
   $this.addClass('open show');
-	opened.push(card); {
-	
-		// Start Timer
-		if (card === opened) {
-			gameTimer();
-			opened = true;
-		}
-    }
-	/* timerVar; */
+	opened.push(card);
 	
 
-	// Compare with opened card
+// Compare with opened card
   if (opened.length > 1) {
     if (card === opened[0]) {
-      $deck.find('.open').addClass('match animated infinite bounce');
+      $deck.find('.open').addClass('match animated infinite shake');
       setTimeout(function() {
-        $deck.find('.match').removeClass('open show animated infinite bounce');
+        $deck.find('.match').removeClass('open show animated infinite shake');
       }, delay);
       match++;
     } else {
-      $deck.find('.open').addClass('notmatch animated infinite wobble');
+      $deck.find('.open').addClass('notmatch animated infinite tada');
 			setTimeout(function() {
-				$deck.find('.open').removeClass('animated infinite wobble');
+				$deck.find('.open').removeClass('animated infinite tada');
 			}, delay / 1.5);
       setTimeout(function() {
-        $deck.find('.open').removeClass('open show notmatch animated infinite wobble');
+        $deck.find('.open').removeClass('open show notmatch animated infinite tada');
       }, delay);
     }
     opened = [];
@@ -179,7 +167,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 		$moveNum.html(moves);
   }
 	
-	// End Game if match all cards
+// End Game if match all cards
 	if (gameCardsQTY === match) {
 		setRating(moves);
 		var score = setRating(moves).score;
