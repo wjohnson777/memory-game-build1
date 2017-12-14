@@ -11,28 +11,32 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Memory Game</h1>
-		<div id="score-panel">
-			<div class="timer">
-				Time:
-				<span class="clock">0:00</span>
-			</div>
+<div class="container">
+	<h1>Memory Game</h1>
+	<div id="score-panel">
+		<div class= "centerdiv">
 			<ul class="stars">
 				<li><i class="fa fa-star fa-lg"></i></li>
 				<li><i class="fa fa-star fa-lg"></i></li>
 				<li><i class="fa fa-star fa-lg"></i></li>
 			</ul>
 			<span class="moves">0</span> Moves
+		</div>
+		<div class="control">
+			<article class="timer">
+				<h3 class="info">Time: <span class="clock">0.00</span>
+			</article>
 			<div class="restart">
-				<i class="fa fa-refresh fa-lg"></i>
+				<i class="fa fa-refresh fa-lg"></i> Restart Game
 			</div>
 		</div>
+		<div class="clear"></div>
 	</div>
-  <ul class="deck"></ul>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.js'></script>
-  <script src="js/app.js"></script>
+	<ul class="deck"></ul>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/sweetalert2/3.0.3/sweetalert2.min.js'></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
