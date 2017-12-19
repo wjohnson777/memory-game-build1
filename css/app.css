@@ -9,14 +9,6 @@ body {
 body {
     background: #fff;
     font-family: 'Coda', cursive;
-	/* display: flex; */
-	/* -webkit-box-pack: center; */
-		/* justify-content: center; */
-	/* -webkit-box-align: center; */
-		/* align-items: center; */
-	/* -webkit-box-orient: vertical; */
-	/* -webkit-box-direction: normal; */
-		/* flex-direction: column; */
 }
 
 h1 {
@@ -27,23 +19,16 @@ h1 {
 	padding-top: 20px;
 }
 
-/*
- * Styles for cards
- */
+/* Styles for cards */
 
 .deck {
     width: 590px;
 	margin: 0 auto;
-    /* min-height: 675px; */
     background: -webkit-linear-gradient(290deg, #02ccba 0%, #1a92ce 100%);
 	background: linear-gradient(160deg, #02ccba 0%, #1a92ce 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
 }
 
 .deck .card {
@@ -68,10 +53,7 @@ h1 {
 	transition: transform .3s ease, -webkit-transform .3s ease;
     cursor: pointer;
 	font-family: FontAwesome;
-	line-height: 98px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5); */
+	line-height: 120px;
 }
 
 .deck .card:nth-child(4n) {
@@ -109,21 +91,12 @@ h1 {
   background: #c40f2d;
 }
 
-/*
- * Styles for the Score Panel
- */
+/* Styles for the Score Panel */
 
 #score-panel {
     width: 690px;
     margin-bottom: 10px;
-	/* margin-top: 10px; */
 }
-
-#/* score-panel .timer {
-	float: left;
-	display: inline-block;
-	margin: 0 15px 0 0;
-} */
 
 #score-panel .stars {
     margin: 0;
@@ -175,7 +148,6 @@ h1 {
 }
 
 .container {
-	/* text-align: center; */
 	max-width: 690px;
 	width: 100%;
 	margin: 0 auto;
@@ -184,9 +156,7 @@ h1 {
 .centerdiv {
 	max-width: 690px;
 	text-align: center;
-	/* max-height: 50px; */
 	width: 100%;
-	/* margin-bottom: 10px; */
 }
 
 .stars {
