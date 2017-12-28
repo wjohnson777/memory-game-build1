@@ -47,35 +47,32 @@ function initGame() {
 
 // Timer
   let gameTimer = () => {
-
     let startTime = new Date().getTime();
 
-    // Update the timer every second
+    // Update the timer
     timer = setInterval(function() {
-
       var now = new Date().getTime();
 
-      // Find the time elapsed between now and start
+      // Time elapsed between now and start
       var elapsed = now - startTime;
 
-      // Calculate minutes and seconds
+      // Minutes and Seconds
       let minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
-      // Add starting 0 if seconds < 10
+      // Starting 0 if seconds < 10
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
-
       let currentTime = minutes + ':' + seconds;
 
-      // Update clock on game screen
+      // Update clock
       $(".clock").text(currentTime);
     }, 750);
 
   };
 
-// Set Rating and final Score
+// Rating and final Score
 function setRating(moves) {
 	var rating = 3;
 	if (moves > rank3stars && moves < rank2stars) {
@@ -144,7 +141,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 	opened.push(card);
 	
 
-// Compare with opened card
+// Compare with first card
   if (opened.length > 1) {
     if (card === opened[0]) {
       $deck.find('.open').addClass('match animated infinite shake');
@@ -167,7 +164,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 		$moveNum.html(moves);
   }
 	
-// End Game if match all cards
+// End Game if all match
 	if (gameCardsQTY === match) {
 		setRating(moves);
 		var score = setRating(moves).score;
