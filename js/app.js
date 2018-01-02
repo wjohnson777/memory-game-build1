@@ -75,15 +75,15 @@ function initGame() {
 // Rating and final Score
 function setRating(moves) {
 	var rating = 3;
-	if (moves > rank3stars && moves < rank2stars) {
+	if (moves <= 9) {
+		$ratingStars.eq(3).removeClass('fa-star').addClass('fa-star-o');
+		rating = 3;
+	} else if (moves > 9 && moves <= 15) {
 		$ratingStars.eq(2).removeClass('fa-star').addClass('fa-star-o');
 		rating = 2;
-	} else if (moves > rank2stars && moves < rank1stars) {
+	} else if (moves > 15) {
 		$ratingStars.eq(1).removeClass('fa-star').addClass('fa-star-o');
 		rating = 1;
-	} else if (moves > rank1stars) {
-		$ratingStars.eq(0).removeClass('fa-star').addClass('fa-star-o');
-		rating = 0;
 	}	
 	return { score: rating };
 };
@@ -137,6 +137,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 	if($('.show').length > 1) { return true; }
 	var $this = $(this),
 			card = $this.context.innerHTML;
+	if($this.hasClass('open')){ return true;};
   $this.addClass('open show');
 	opened.push(card);
 	
@@ -173,6 +174,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 		}, 500);
   }
 });
+$(this).unbind('click');
 };
 
 initGame();
