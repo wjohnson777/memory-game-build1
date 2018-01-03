@@ -108,7 +108,7 @@ function endGame(moves, score) {
 }
 
 // Restart Game
-$restart.bind('click', function() {
+$restart.on('click', function() {
   swal({
     allowEscapeKey: false,
     allowOutsideClick: false,
@@ -131,7 +131,7 @@ $restart.bind('click', function() {
 var addClkListener = function() {
 
 // Card flip
-$deck.find('.card:not(".match, .open")').bind('click' , function() {
+$deck.find('.card:not(".match, .open")').on('click' , function() {
 	clicks++ ;
 	clicks == 1 ? gameTimer() :'';
 	if($('.show').length > 1) { return true; }
@@ -150,6 +150,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
         $deck.find('.match').removeClass('open show animated infinite shake');
       }, delay);
       match++;
+	  $deck.find('.open, .match').off('click');
     } else {
       $deck.find('.open').addClass('notmatch animated infinite tada');
 			setTimeout(function() {
@@ -174,7 +175,7 @@ $deck.find('.card:not(".match, .open")').bind('click' , function() {
 		}, 500);
   }
 });
-$(this).unbind('click');
+
 };
 
 initGame();
