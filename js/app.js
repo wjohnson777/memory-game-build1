@@ -75,13 +75,13 @@ function initGame() {
 // Rating and final Score
 function setRating(moves) {
 	var rating = 3;
-	if (moves <= 9) {
+	if (moves <= 12) {
 		$ratingStars.eq(3).removeClass('fa-star').addClass('fa-star-o');
 		rating = 3;
-	} else if (moves > 9 && moves <= 15) {
+	} else if (moves > 12 && moves <= 18) {
 		$ratingStars.eq(2).removeClass('fa-star').addClass('fa-star-o');
 		rating = 2;
-	} else if (moves > 15) {
+	} else if (moves > 18) {
 		$ratingStars.eq(1).removeClass('fa-star').addClass('fa-star-o');
 		rating = 1;
 	}	
